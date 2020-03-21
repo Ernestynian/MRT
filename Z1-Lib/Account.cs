@@ -2,31 +2,41 @@ using System;
 
 namespace Z1_Lib
 {
-    public class Account
+    public class Account : BaseAccount, IFreezable, ICloseable, IVerifable
     {
-        decimal balance = 0m;
-        public decimal Balance
+        public override void TransferMoneyIn(decimal amount)
         {
-            get => balance;
-            set
+            if(Open == false)
             {
-                if(open == false)
-                {
-                    throw new InvalidOperationException("This account is closed.");
-                }
-
-                if(value < balance && Verified == false)
-                {
-                    throw new InvalidOperationException("Can't extract money when the account is not verified.");
-                }
-
-                if(value != balance)
-                {
-                    Frozen = false;
-                }
-
-                balance = value;
+                throw new InvalidOperationException("This account is closed.");
             }
+
+            if(amount > 0)
+            {
+                Frozen = false;
+            }
+
+            base.TransferMoneyIn(amount);
+        }
+
+        public override void TransferMoneyOut(decimal amount)
+        {
+            if(Open == false)
+            {
+                throw new InvalidOperationException("This account is closed.");
+            }
+
+            if(Verified == false)
+            {
+                throw new InvalidOperationException("Can't extract money when the account is not verified.");
+            }
+
+            if(amount > 0)
+            {
+                Frozen = false;
+            }
+
+            base.TransferMoneyOut(amount);
         }
 
         bool verified = false;
@@ -43,6 +53,7 @@ namespace Z1_Lib
         }
 
         bool open = true;
+        public bool Open { get => open; }
 
         bool frozen = false;
         public bool Frozen
