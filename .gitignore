@@ -2,3 +2,8 @@ Z1-Lib/obj/*
 Testing/*
 Z1-Lib/bin/*
 .vscode/*
+Z2-Api/bin/*
+Z2-Api/obj/*
+Z2-Api/Properties/*
+Z2-Api/appsettings.json
+Z2-Api/appsettings.Development.json
