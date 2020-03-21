@@ -2,7 +2,7 @@ using System;
 
 namespace Z1_Lib
 {
-    public class BaseAccount : IAccount
+    public class BaseAccount : IBaseAccount
     {
         decimal balance = 0m;
         public decimal Balance { get => balance; }

@@ -2,7 +2,7 @@ using System;
 
 namespace Z1_Lib
 {
-    public class Account : BaseAccount, IFreezable, ICloseable, IVerifable
+    public class Account : BaseAccount, IAccount
     {
         public override void TransferMoneyIn(decimal amount)
         {
