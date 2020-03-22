@@ -48,7 +48,7 @@ namespace Z2_Api.Controllers
             {
                 _account.TransferMoneyIn(amount);
             }
-            catch(ArgumentException e)
+            catch(InvalidOperationException e)
             {
                 return BadRequest(e.Message);//
             }
@@ -70,7 +70,7 @@ namespace Z2_Api.Controllers
             {
                 _account.TransferMoneyOut(amount);
             }
-            catch(ArgumentException e)
+            catch(InvalidOperationException e)
             {
                 return BadRequest(e.Message);//
             }

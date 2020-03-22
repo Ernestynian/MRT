@@ -1,0 +1,11 @@
+#account_manager_root {
+  padding: 8em;
+}
+
+.yes {
+  background-color: lightgreen;
+}
+
+.no {
+  background-color: lightsalmon;
+}
